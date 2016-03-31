@@ -1,0 +1,24 @@
+﻿{
+	"DefaultUsername": "carrier",
+	"DefaultPassword": "P2ssw0rd0)",
+	"Data": {
+		"UseInMemoryStore": "true",
+		"DefaultConnection": {
+			"ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MyShuttle;Trusted_Connection=True;MultipleActiveResultSets=true"
+		}
+	},
+	"EntityFramework": {
+		"MyShuttleContext": {
+			"ConnectionStringKey": "Data:DefaultConnection:ConnectionString"
+		}
+	},
+	"Identity": {
+		"Password": {
+			"RequireDigit": "false",
+			"RequireLowercase": "false",
+			"RequireUppercase": "false",
+			"RequireNonLetterOrDigit": "false"
+		}
+	}
+
+}

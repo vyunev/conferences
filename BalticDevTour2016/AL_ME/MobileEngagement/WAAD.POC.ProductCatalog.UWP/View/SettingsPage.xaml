@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="WAAD.POC.ProductCatalog.UWP.View.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WAAD.POC.ProductCatalog.UWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctl="using:WAAD.POC.ProductCatalog.UWP.CustomControls"
+    xmlns:common="using:WAAD.POC.ProductCatalog.UWP.Common"
+    RequestedTheme="Light"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="MobileDevice">
+                    <VisualState.StateTriggers>
+                        <common:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SubCategoryPivot.Margin" Value="0,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="DesktopDevice"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ctl:HeaderControl>
+            <ctl:HeaderControl.HeaderContent>
+                <TextBlock Text="SETTINGS" Style="{ThemeResource PageTitleTextBlockStyle}"
+                           Foreground="{StaticResource HeroBackgroundThemeBrush}" />
+            </ctl:HeaderControl.HeaderContent>
+        </ctl:HeaderControl>
+        <Rectangle Fill="{StaticResource SolidWhiteBrush}" Height="48"
+                   VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="1"/>
+        <Pivot x:Name="SubCategoryPivot" Grid.Row="1"
+               Foreground="{StaticResource SolidBlackBrush}"
+               Margin="20,0,0,0" FontFamily="Segoe UI Light"
+               >
+            <PivotItem Header="Privacy statement">
+                <WebView Source="http://w10azfs-pc-landingpage.azurewebsites.net/index.html#privacy_policy" />
+            </PivotItem>
+            <PivotItem Header="About">
+                <StackPanel Margin="0,20,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Product Catalog" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <TextBlock x:Name="tbVersion" Style="{StaticResource BodyTextBlockStyle}" />
+                    </StackPanel>
+                    <StackPanel Margin="0,20">
+                        <TextBlock Text="Contact us" Style="{StaticResource TitleTextBlockStyle}"/>
+                        <HyperlinkButton FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="18" 
+                                         Content="Feedbacks" Margin="20,-6,0,0"
+    					                 NavigateUri="mailto:ProductCatalogSupport@Contoso.com?subject=Feedbacks about Product Catalog Application" 
+                                         />
+                        <HyperlinkButton FontFamily="Segoe UI" FontWeight="SemiLight" FontSize="18" 
+                                         Content="About" Margin="20,-8,0,0"
+    					                 NavigateUri="http://w10azfs-pc-blog.azurewebsites.net/" 
+                                         />
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

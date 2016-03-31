@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Name="root"
+    x:Class="WAAD.POC.ProductCatalog.UWP.CustomControls.HeaderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctl="using:WAAD.POC.ProductCatalog.UWP.CustomControls"
+    VerticalAlignment="Top"
+    VerticalContentAlignment="Top"
+    HorizontalAlignment="Stretch"
+    HorizontalContentAlignment="Stretch"
+    Height="48"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="800"
+    Background="{StaticResource LightGreyBrush}">
+  
+
+    <Grid x:Name="grid" Background="{x:Bind Background}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="titleBar" Margin="20,0,0,0">
+            <ContentPresenter x:Name="content"
+                              VerticalAlignment="{x:Bind VerticalContentAlignment}"
+                              HorizontalAlignment="{x:Bind HorizontalContentAlignment}"
+                              Margin="{x:Bind Padding}"
+                              Content="{x:Bind HeaderContent}"/>
+        </Grid>
+        <Grid x:Name="buttonsBar" Margin="0,0,0,0" Grid.Column="1">
+            <ContentPresenter x:Name="buttons"
+                              VerticalAlignment="{x:Bind VerticalContentAlignment}"
+                              HorizontalAlignment="{x:Bind HorizontalContentAlignment}"
+                              Margin="{x:Bind Padding}"
+                              Content="{x:Bind ButtonsContent}"/>
+        </Grid>        
+        <ctl:SearchUserControl x:Name="srchControl"  Grid.Column="2" VerticalAlignment="Center" Margin="20,0,20,0" MaxWidth="500" MinWidth="300" />
+        <Button x:Name="btnSearch" Content="&#xE094;"  Grid.Column="2"  HorizontalAlignment="Right" Height="28" Width="28"  Margin="0,0,20,0" BorderBrush="{x:Null}" BorderThickness="0" Background="{x:Null}" Style="{StaticResource PlainButtonStyle}" Padding="0" Visibility="Collapsed" Foreground="{StaticResource SolidBlackBrush}" FontFamily="Segoe MDL2 Assets" FontSize="16"/>
+    </Grid>
+</UserControl>

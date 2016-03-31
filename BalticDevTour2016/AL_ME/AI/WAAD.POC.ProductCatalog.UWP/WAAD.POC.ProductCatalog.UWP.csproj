@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{3DD6629F-33E4-49A4-B19D-507F3913AEB3}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WAAD.POC.ProductCatalog.UWP</RootNamespace>
+    <AssemblyName>WAAD.POC.ProductCatalog.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>WAAD.POC.ProductCatalog.UAP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Never</AppxBundle>
+    <ApplicationInsightsResourceId>/subscriptions/cc8b63ea-b5e6-45ea-9239-59a1fa799351/resourcegroups/ContosoProducts/providers/microsoft.insights/components/ContosoProduct</ApplicationInsightsResourceId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UAP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BooleanToMultiSelectConverter.cs" />
+    <Compile Include="Common\DeviceFamily.cs" />
+    <Compile Include="Common\DeviceFamilyAdaptiveTrigger.cs" />
+    <Compile Include="Common\DeviceFamilyHelper.cs" />
+    <Compile Include="Common\FlyoutHelper.cs" />
+    <Compile Include="Common\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\ITriggerValue.cs" />
+    <Compile Include="Common\ContinuumTrigger.cs" />
+    <Compile Include="Common\Bindable.cs" />
+    <Compile Include="CustomControls\ParallaxImageControl.xaml.cs">
+      <DependentUpon>ParallaxImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DesignTimeDataService.cs" />
+    <Compile Include="DisplayItems\ProductCategoryDisplayItem.cs" />
+    <Compile Include="DisplayItems\ProductListFilterGroupDisplayItem.cs" />
+    <Compile Include="DisplayItems\ProductListFilterItem.cs" />
+    <Compile Include="DisplayItems\ProductListRangeFilterItem.cs" />
+    <Compile Include="DisplayItems\SearchGroupDisplayItem.cs" />
+    <Compile Include="DisplayItems\SubCategoryBrandDisplayItem.cs" />
+    <Compile Include="DisplayItems\SubCategoryDisplayItem.cs" />
+    <Compile Include="Flyout\ProductListFilterFlyout.xaml.cs">
+      <DependentUpon>ProductListFilterFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ProductListFilterViewModel.cs" />
+    <Compile Include="ViewModel\SearchResultsViewModel.cs" />
+    <Compile Include="ViewModel\CompareProductsViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelFactory.cs" />
+    <Compile Include="View\AppliancesProductListingPage.xaml.cs">
+      <DependentUpon>AppliancesProductListingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AudioProductListingPage.xaml.cs">
+      <DependentUpon>AudioProductListingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CommonPage.cs" />
+    <Compile Include="View\CamerasProductListingPage.xaml.cs">
+      <DependentUpon>CamerasProductListingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\Command.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\FavoritesHelper.cs" />
+    <Compile Include="Common\ItemClickCommand.cs" />
+    <Compile Include="Common\LocalStoreDataService.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\PriceConverter.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\TextCaseConverter.cs" />
+    <Compile Include="Common\ValueUtils.cs" />
+    <Compile Include="CustomControls\ExpandCollapseControl.xaml.cs">
+      <DependentUpon>ExpandCollapseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExtendedGridView.cs" />
+    <Compile Include="CustomControls\SearchUserControl.xaml.cs">
+      <DependentUpon>SearchUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\HeaderControl.xaml.cs">
+      <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProductListingViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\ViewProductViewModel.cs" />
+    <Compile Include="View\CompareProductsPage.xaml.cs">
+      <DependentUpon>CompareProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewProductPage.xaml.cs">
+      <DependentUpon>ViewProductPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="project.json" />
+    <None Include="Service References\Application Insights\ConnectedService.json" />
+    <None Include="WAAD.POC.ProductCatalog.UAP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\SearchLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Tile_150X150.png" />
+    <Content Include="Assets\Tile_310X150.png" />
+    <Content Include="Assets\Tile_310X310.png" />
+    <Content Include="Assets\Tile_70X70.png" />
+    <Content Include="Branding\Background.png" />
+    <Content Include="Branding\pcBackgroundHero.jpg" />
+    <Content Include="Branding\pcLogoWhite.png" />
+    <Content Include="Branding\pcLogoWhiteLarge.png" />
+    <Content Include="Common\ReadMe.txt" />
+    <Content Include="Data\Category.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\Favorites.xml" />
+    <Content Include="Data\Product.xml" />
+    <Content Include="Data\ProductCategoryImages\1010101.png" />
+    <Content Include="Data\ProductCategoryImages\1020101.png" />
+    <Content Include="Data\ProductCategoryImages\1050101.png" />
+    <Content Include="Data\ProductCategoryImages\1060101.png" />
+    <Content Include="Data\ProductCategoryImages\2010101.png" />
+    <Content Include="Data\ProductCategoryImages\2020101.png" />
+    <Content Include="Data\ProductCategoryImages\2030101.png" />
+    <Content Include="Data\ProductCategoryImages\2040101.png" />
+    <Content Include="Data\ProductCategoryImages\3010101.png" />
+    <Content Include="Data\ProductCategoryImages\3020101.png" />
+    <Content Include="Data\ProductCategoryImages\3030101.png" />
+    <Content Include="Data\ProductCategoryImages\3040101.png" />
+    <Content Include="Data\ProductCategoryImages\4010101.png" />
+    <Content Include="Data\ProductCategoryImages\4020101.png" />
+    <Content Include="Data\ProductCategoryImages\4030101.png" />
+    <Content Include="Data\ProductCategoryImages\4040101.png" />
+    <Content Include="Data\ProductCategoryImages\5020101.png" />
+    <Content Include="Data\ProductCategoryImages\5040101.png" />
+    <Content Include="Data\ProductCategoryImages\5050101.png" />
+    <Content Include="Data\ProductImages\2010101.png" />
+    <Content Include="Data\ProductImages\2010102.png" />
+    <Content Include="Data\ProductImages\2010103.png" />
+    <Content Include="Data\ProductImages\2010201.png" />
+    <Content Include="Data\ProductImages\2010202.png" />
+    <Content Include="Data\ProductImages\2010203.png" />
+    <Content Include="Data\ProductImages\2010204.png" />
+    <Content Include="Data\ProductImages\2010301.png" />
+    <Content Include="Data\ProductImages\2010302.png" />
+    <Content Include="Data\ProductImages\2010303.png" />
+    <Content Include="Data\ProductImages\2010401.png" />
+    <Content Include="Data\ProductImages\2010402.png" />
+    <Content Include="Data\ProductImages\2010403.png" />
+    <Content Include="Data\ProductImages\2010501.png" />
+    <Content Include="Data\ProductImages\2010502.png" />
+    <Content Include="Data\ProductImages\2010503.png" />
+    <Content Include="Data\ProductImages\2010504.png" />
+    <Content Include="Data\ProductImages\2010601.png" />
+    <Content Include="Data\ProductImages\2010602.png" />
+    <Content Include="Data\ProductImages\2010603.png" />
+    <Content Include="Data\ProductImages\2010604.png" />
+    <Content Include="Data\ProductImages\2010701.png" />
+    <Content Include="Data\ProductImages\2010702.png" />
+    <Content Include="Data\ProductImages\2010703.png" />
+    <Content Include="Data\ProductImages\2010704.png" />
+    <Content Include="Data\ProductImages\2020101.png" />
+    <Content Include="Data\ProductImages\2020102.png" />
+    <Content Include="Data\ProductImages\2020103.png" />
+    <Content Include="Data\ProductImages\2020104.png" />
+    <Content Include="Data\ProductImages\2020201.png" />
+    <Content Include="Data\ProductImages\2020202.png" />
+    <Content Include="Data\ProductImages\2020203.png" />
+    <Content Include="Data\ProductImages\2020204.png" />
+    <Content Include="Data\ProductImages\2020301.png" />
+    <Content Include="Data\ProductImages\2020302.png" />
+    <Content Include="Data\ProductImages\2020303.png" />
+    <Content Include="Data\ProductImages\2020304.png" />
+    <Content Include="Data\ProductImages\2020401.png" />
+    <Content Include="Data\ProductImages\2020402.png" />
+    <Content Include="Data\ProductImages\2020404.png" />
+    <Content Include="Data\ProductImages\2020501.png" />
+    <Content Include="Data\ProductImages\2020502.png" />
+    <Content Include="Data\ProductImages\2020503.png" />
+    <Content Include="Data\ProductImages\2020504.png" />
+    <Content Include="Data\ProductImages\2020505.png" />
+    <Content Include="Data\ProductImages\2020506.png" />
+    <Content Include="Data\ProductImages\2020601.png" />
+    <Content Include="Data\ProductImages\2020602.png" />
+    <Content Include="Data\ProductImages\2020604.png" />
+    <Content Include="Data\ProductImages\2020606.png" />
+    <Content Include="Data\ProductImages\2030101.png" />
+    <Content Include="Data\ProductImages\2030102.png" />
+    <Content Include="Data\ProductImages\2030201.png" />
+    <Content Include="Data\ProductImages\2030202.png" />
+    <Content Include="Data\ProductImages\2030301.png" />
+    <Content Include="Data\ProductImages\2030302.png" />
+    <Content Include="Data\ProductImages\2030401.png" />
+    <Content Include="Data\ProductImages\2030402.png" />
+    <Content Include="Data\ProductImages\2030501.png" />
+    <Content Include="Data\ProductImages\2030502.png" />
+    <Content Include="Data\ProductImages\2030601.png" />
+    <Content Include="Data\ProductImages\2030602.png" />
+    <Content Include="Data\ProductImages\2030701.png" />
+    <Content Include="Data\ProductImages\2030702.png" />
+    <Content Include="Data\ProductImages\2030801.png" />
+    <Content Include="Data\ProductImages\2030802.png" />
+    <Content Include="Data\ProductImages\2030901.png" />
+    <Content Include="Data\ProductImages\2030902.png" />
+    <Content Include="Data\ProductImages\2031001.png" />
+    <Content Include="Data\ProductImages\2031002.png" />
+    <Content Include="Data\ProductImages\2031101.png" />
+    <Content Include="Data\ProductImages\2031102.png" />
+    <Content Include="Data\ProductImages\2031201.png" />
+    <Content Include="Data\ProductImages\2031202.png" />
+    <Content Include="Data\ProductImages\2040101.png" />
+    <Content Include="Data\ProductImages\2040102.png" />
+    <Content Include="Data\ProductImages\2040201.png" />
+    <Content Include="Data\ProductImages\2040202.png" />
+    <Content Include="Data\ProductImages\2040301.png" />
+    <Content Include="Data\ProductImages\2040302.png" />
+    <Content Include="Data\ProductImages\2040401.png" />
+    <Content Include="Data\ProductImages\2040402.png" />
+    <Content Include="Data\ProductImages\2040403.png" />
+    <Content Include="Data\ProductImages\2040404.png" />
+    <Content Include="Data\ProductImages\2040501.png" />
+    <Content Include="Data\ProductImages\2040601.png" />
+    <Content Include="Data\ProductImages\4010101.png" />
+    <Content Include="Data\ProductImages\4010102.png" />
+    <Content Include="Data\ProductImages\4010103.png" />
+    <Content Include="Data\ProductImages\4010104.png" />
+    <Content Include="Data\ProductImages\4010201.png" />
+    <Content Include="Data\ProductImages\4010202.png" />
+    <Content Include="Data\ProductImages\4010203.png" />
+    <Content Include="Data\ProductImages\4010204.png" />
+    <Content Include="Data\ProductImages\4010301.png" />
+    <Content Include="Data\ProductImages\4010302.png" />
+    <Content Include="Data\ProductImages\4010303.png" />
+    <Content Include="Data\ProductImages\4010304.png" />
+    <Content Include="Data\ProductImages\4010401.png" />
+    <Content Include="Data\ProductImages\4010402.png" />
+    <Content Include="Data\ProductImages\4010403.png" />
+    <Content Include="Data\ProductImages\4010404.png" />
+    <Content Include="Data\ProductImages\4010405.png" />
+    <Content Include="Data\ProductImages\4010501.png" />
+    <Content Include="Data\ProductImages\4010502.png" />
+    <Content Include="Data\ProductImages\4010503.png" />
+    <Content Include="Data\ProductImages\4010504.png" />
+    <Content Include="Data\ProductImages\4010505.png" />
+    <Content Include="Data\ProductImages\4010601.png" />
+    <Content Include="Data\ProductImages\4010603.png" />
+    <Content Include="Data\ProductImages\4010604.png" />
+    <Content Include="Data\ProductImages\4020101.png" />
+    <Content Include="Data\ProductImages\4020103.png" />
+    <Content Include="Data\ProductImages\4020201.png" />
+    <Content Include="Data\ProductImages\4020203.png" />
+    <Content Include="Data\ProductImages\4020301.png" />
+    <Content Include="Data\ProductImages\4020303.png" />
+    <Content Include="Data\ProductImages\4020401.png" />
+    <Content Include="Data\ProductImages\4020403.png" />
+    <Content Include="Data\ProductImages\4020501.png" />
+    <Content Include="Data\ProductImages\4020502.png" />
+    <Content Include="Data\ProductImages\4020503.png" />
+    <Content Include="Data\ProductImages\4020504.png" />
+    <Content Include="Data\ProductImages\4020505.png" />
+    <Content Include="Data\ProductImages\4020506.png" />
+    <Content Include="Data\ProductImages\4020507.png" />
+    <Content Include="Data\ProductImages\4020508.png" />
+    <Content Include="Data\ProductImages\4020601.png" />
+    <Content Include="Data\ProductImages\4020603.png" />
+    <Content Include="Data\ProductImages\4020701.png" />
+    <Content Include="Data\ProductImages\4020702.png" />
+    <Content Include="Data\ProductImages\4020801.png" />
+    <Content Include="Data\ProductImages\4020802.png" />
+    <Content Include="Data\ProductImages\4020803.png" />
+    <Content Include="Data\ProductImages\4020804.png" />
+    <Content Include="Data\ProductImages\4020805.png" />
+    <Content Include="Data\ProductImages\4030101.png" />
+    <Content Include="Data\ProductImages\4030102.png" />
+    <Content Include="Data\ProductImages\4030103.png" />
+    <Content Include="Data\ProductImages\4030202.png" />
+    <Content Include="Data\ProductImages\4030401.png" />
+    <Content Include="Data\ProductImages\4030403.png" />
+    <Content Include="Data\ProductImages\4030501.png" />
+    <Content Include="Data\ProductImages\4030502.png" />
+    <Content Include="Data\ProductImages\4030503.png" />
+    <Content Include="Data\ProductImages\4030601.png" />
+    <Content Include="Data\ProductImages\4030602.png" />
+    <Content Include="Data\ProductImages\4030701.png" />
+    <Content Include="Data\ProductImages\4030702.png" />
+    <Content Include="Data\ProductImages\4030703.png" />
+    <Content Include="Data\ProductImages\4030704.png" />
+    <Content Include="Data\ProductImages\4030801.png" />
+    <Content Include="Data\ProductImages\4030802.png" />
+    <Content Include="Data\ProductImages\4030901.png" />
+    <Content Include="Data\ProductImages\4030902.png" />
+    <Content Include="Data\ProductImages\4030903.png" />
+    <Content Include="Data\ProductImages\4030904.png" />
+    <Content Include="Data\ProductImages\4030905.png" />
+    <Content Include="Data\ProductImages\4030906.png" />
+    <Content Include="Data\ProductImages\4030907.png" />
+    <Content Include="Data\ProductImages\4030908.png" />
+    <Content Include="Data\ProductImages\4040101.png" />
+    <Content Include="Data\ProductImages\4040102.png" />
+    <Content Include="Data\ProductImages\4040103.png" />
+    <Content Include="Data\ProductImages\4040104.png" />
+    <Content Include="Data\ProductImages\4040105.png" />
+    <Content Include="Data\ProductImages\4040201.png" />
+    <Content Include="Data\ProductImages\4040202.png" />
+    <Content Include="Data\ProductImages\4040203.png" />
+    <Content Include="Data\ProductImages\4040204.png" />
+    <Content Include="Data\ProductImages\4040205.png" />
+    <Content Include="Data\ProductImages\4040301.png" />
+    <Content Include="Data\ProductImages\4040302.png" />
+    <Content Include="Data\ProductImages\4040303.png" />
+    <Content Include="Data\ProductImages\6010101.png" />
+    <Content Include="Data\ProductImages\6010102.png" />
+    <Content Include="Data\ProductImages\6010103.png" />
+    <Content Include="Data\ProductImages\6010201.png" />
+    <Content Include="Data\ProductImages\6010202.png" />
+    <Content Include="Data\ProductImages\6010203.png" />
+    <Content Include="Data\ProductImages\6010204.png" />
+    <Content Include="Data\ProductImages\6010301.png" />
+    <Content Include="Data\ProductImages\6010302.png" />
+    <Content Include="Data\ProductImages\6010303.png" />
+    <Content Include="Data\ProductImages\6010304.png" />
+    <Content Include="Data\ProductImages\6010401.png" />
+    <Content Include="Data\ProductImages\6010402.png" />
+    <Content Include="Data\ProductImages\6010403.png" />
+    <Content Include="Data\ProductImages\6010404.png" />
+    <Content Include="Data\ProductImages\6010501.png" />
+    <Content Include="Data\ProductImages\6010502.png" />
+    <Content Include="Data\ProductImages\6010504.png" />
+    <Content Include="Data\ProductImages\6010601.png" />
+    <Content Include="Data\ProductImages\6010602.png" />
+    <Content Include="Data\ProductImages\6010604.png" />
+    <Content Include="Data\ProductImages\6030101.png" />
+    <Content Include="Data\ProductImages\6030102.png" />
+    <Content Include="Data\ProductImages\6030103.png" />
+    <Content Include="Data\ProductImages\6030104.png" />
+    <Content Include="Data\ProductImages\6030105.png" />
+    <Content Include="Data\ProductImages\6030106.png" />
+    <Content Include="Data\ProductImages\6030201.png" />
+    <Content Include="Data\ProductImages\6030202.png" />
+    <Content Include="Data\ProductImages\6030203.png" />
+    <Content Include="Data\ProductImages\6030204.png" />
+    <Content Include="Data\ProductImages\6030205.png" />
+    <Content Include="Data\ProductImages\6030206.png" />
+    <Content Include="Data\ProductImages\6030301.png" />
+    <Content Include="Data\ProductImages\6030302.png" />
+    <Content Include="Data\ProductImages\6030303.png" />
+    <Content Include="Data\ProductImages\6030304.png" />
+    <Content Include="Data\ProductImages\6030305.png" />
+    <Content Include="Data\ProductImages\6030306.png" />
+    <Content Include="Data\ProductImages\6030401.png" />
+    <Content Include="Data\ProductImages\6030402.png" />
+    <Content Include="Data\ProductImages\6030403.png" />
+    <Content Include="Data\ProductImages\6030404.png" />
+    <Content Include="Data\ProductImages\6030405.png" />
+    <Content Include="Data\ProductImages\6030406.png" />
+    <Content Include="Data\ProductImages\6030501.png" />
+    <Content Include="Data\ProductImages\6040101.png" />
+    <Content Include="Data\ProductImages\6040102.png" />
+    <Content Include="Data\ProductImages\6040103.png" />
+    <Content Include="Data\ProductImages\6040104.png" />
+    <Content Include="Data\ProductImages\6040201.png" />
+    <Content Include="Data\ProductImages\6040202.png" />
+    <Content Include="Data\ProductImages\6040203.png" />
+    <Content Include="Data\ProductImages\6040204.png" />
+    <Content Include="Data\ProductImages\6040301.png" />
+    <Content Include="Data\ProductImages\6040302.png" />
+    <Content Include="Data\ProductImages\6040303.png" />
+    <Content Include="Data\ProductImages\6040304.png" />
+    <Content Include="Data\ProductImages\6040401.png" />
+    <Content Include="Data\ProductImages\6040402.png" />
+    <Content Include="Data\ProductImages\6040403.png" />
+    <Content Include="Data\ProductImages\6040404.png" />
+    <Content Include="Data\ProductImages\6040501.png" />
+    <Content Include="Data\ProductImages\6040502.png" />
+    <Content Include="Data\ProductImages\6040503.png" />
+    <Content Include="Data\ProductImages\6040601.png" />
+    <Content Include="Data\ProductImages\6040602.png" />
+    <Content Include="Data\ProductImages\6040603.png" />
+    <Content Include="Data\ProductImages\6040701.png" />
+    <Content Include="Data\ProductImages\6040702.png" />
+    <Content Include="Data\ProductImages\6040703.png" />
+    <Content Include="Properties\Default.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="CustomControls\ParallaxImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Flyout\ProductListFilterFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AppliancesProductListingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AudioProductListingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Branding\CustomStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Branding\CustomTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Branding\SplitViewStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CamerasProductListingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControls\ExpandCollapseControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\SearchUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControls\HeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompareProductsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SearchResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewProductPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WAAD.POC.ProductCatalog.DataModels\WAAD.POC.ProductCatalog.DataModels.csproj">
+      <Project>{7a053b26-4944-4a9f-b758-3a9b28a1cbb2}</Project>
+      <Name>WAAD.POC.ProductCatalog.DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WAAD.POC.ProductCatalog.DataSources\WAAD.POC.ProductCatalog.DataSources.csproj">
+      <Project>{84cf0670-fb8d-4308-9d9a-5ccf150a1ea5}</Project>
+      <Name>WAAD.POC.ProductCatalog.DataSources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

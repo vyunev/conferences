@@ -1,0 +1,176 @@
+﻿<views:CommonPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:WAAD.POC.ProductCatalog.UWP.View"
+    xmlns:data="using:WAAD.POC.ProductCatalog.UWP.ViewModel"
+    xmlns:ctl="using:WAAD.POC.ProductCatalog.UWP.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:WAAD.POC.ProductCatalog.UWP.Common"
+    x:Class="WAAD.POC.ProductCatalog.UWP.View.CompareProductsPage"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    d:DataContext="{Binding Source={d:DesignInstance Type=data:CompareProductsViewModel, IsDesignTimeCreatable=True}}">
+    <views:CommonPage.Resources>
+        <common:TextCaseConverter x:Key="TextCaseConverter"/>
+        <Style x:Key="ProductCompareItemContainerStyle" TargetType="GridViewItem">
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderBrush" Value="{StaticResource TileBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Background" Value="{StaticResource TileBackgroundBrush}"/>
+        </Style>
+        <Style x:Key="WideProductCompareItemContainerStyle" TargetType="GridViewItem" BasedOn="{StaticResource ProductCompareItemContainerStyle}">
+            <Setter Property="Width" Value="220"/>
+        </Style>
+    </views:CommonPage.Resources>
+    <Grid Style="{StaticResource LayoutRootStyle}" Margin="0">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="MobileDevice">
+                    <VisualState.StateTriggers>
+                        <common:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ProductCompareGrid.ItemContainerStyle" Value="{StaticResource ProductCompareItemContainerStyle}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ProductCompareGrid.ItemContainerStyle" Value="{StaticResource WideProductCompareItemContainerStyle}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ProductCompareGrid.ItemContainerStyle" Value="{StaticResource ProductCompareItemContainerStyle}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ctl:HeaderControl>
+            <ctl:HeaderControl.HeaderContent>
+                <TextBlock Text="{Binding PageName, Converter={StaticResource TextCaseConverter}, TargetNullValue=Initializing}" Style="{ThemeResource PageTitleTextBlockStyle}" Foreground="{StaticResource HeroBackgroundThemeBrush}" />
+            </ctl:HeaderControl.HeaderContent>
+        </ctl:HeaderControl>
+        <!--<TextBlock Text="{Binding Title, Converter={StaticResource TextCaseConverter}, TargetNullValue=Initializing}" Style="{ThemeResource PageTitleTextBlockStyle}" Foreground="{StaticResource HeroBackgroundThemeBrush}" Margin="30,70,12,4" />-->
+        <Grid Grid.Row="1"
+              Margin="0">
+            <!-- Added 20px addition margin to give spave above comparison list -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--
+            ==================================================
+            DEFINE COMPARISON LABELS GRID:
+            THis grid holds the static labels of comparison
+            ==================================================
+            -->
+            <Grid Grid.Column="0" Margin="0" Visibility="Visible" Background="{StaticResource TileBorderBrush}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="55"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="1" BorderBrush="{StaticResource HalfWhiteBrush}" BorderThickness="0,0,0,0" Margin="30,0,0,0" >
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Name" Foreground="{StaticResource SolidWhiteBrush}"/>
+                </Border>
+                <Border Grid.Row="2" BorderBrush="{StaticResource HalfWhiteBrush}" BorderThickness="0,1,0,0" Margin="30,0,0,0" >
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Brand" Foreground="{StaticResource SolidWhiteBrush}"/>
+                </Border>
+                <Border Grid.Row="3" BorderBrush="{StaticResource HalfWhiteBrush}" BorderThickness="0,1,0,0" Margin="30,0,0,0" >
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Price" Foreground="{StaticResource SolidWhiteBrush}"/>
+                </Border>
+                <Border Grid.Row="4" BorderBrush="{StaticResource HalfWhiteBrush}" BorderThickness="0,1,0,0" Margin="30,0,0,0" >
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"  VerticalAlignment="Center" HorizontalAlignment="Left" Text="Description" Foreground="{StaticResource SolidWhiteBrush}"/>
+                </Border>
+
+            </Grid>
+
+            <!--
+            ===============================================
+            DEFINE COMPARISON VALUES GRID:
+            THis grid displays the values of comparsion.
+            ===============================================
+            -->
+            <GridView
+                x:Name="ProductCompareGrid"
+                AutomationProperties.AutomationId="valuesCollectionGrid"
+                AutomationProperties.Name="Selected Products"
+                Grid.Column="1"
+                CanReorderItems="True" 
+                AllowDrop="True" 
+                CanDragItems="True"
+                SelectionMode="Single"
+                IsSwipeEnabled="True"
+                IsItemClickEnabled="True"
+                ItemsSource="{Binding Products}"
+                ItemClick="OnItemClick" Margin="0" 
+                ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                ScrollViewer.HorizontalScrollMode="Enabled"
+                ScrollViewer.VerticalScrollMode="Disabled" ItemContainerStyle="{StaticResource WideProductCompareItemContainerStyle}">
+
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,40"  />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Border Background="{StaticResource HalfWhiteBrush}" BorderBrush="{StaticResource OffWhiteBrush}" BorderThickness="1" >
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150"/>
+                                    <RowDefinition Height="55"/>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" BorderBrush="{StaticResource TileBorderBrush}" BorderThickness="0,0,0,0" >
+                                    <Grid  Height="150">
+                                        <Image VerticalAlignment="Top" HorizontalAlignment="Center" Stretch="Uniform" Height="140" Source="{Binding ImagePath}" />
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom"  BorderBrush="{StaticResource TileBorderBrush}" BorderThickness="0,0,0,1" >
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" MaxLines="3"  Margin="5" Style="{StaticResource BodyTextBlockStyle}" FontWeight="Normal" Foreground="{StaticResource SolidBlackBrush}" />
+                                </Border>
+                                <Border Grid.Row="2" BorderBrush="{StaticResource TileBorderBrush}" BorderThickness="0,0,0,1" >
+                                    <TextBlock Text="{Binding Brand}" VerticalAlignment="Center"  Margin="5" Style="{StaticResource BodyTextBlockStyle}" />
+                                </Border>
+                                <Border Grid.Row="3" BorderBrush="{StaticResource TileBorderBrush}" BorderThickness="0,0,0,1" >
+                                    <TextBlock VerticalAlignment="Center" Margin="5" FontWeight="SemiBold" Style="{StaticResource BodyTextBlockStyle}" Text="{Binding Price, Converter={StaticResource PriceConverter}, ConverterParameter={Binding Price}, ConverterLanguage=English}"/>
+                                </Border>
+                                <Border Grid.Row="4" BorderBrush="{StaticResource TileBorderBrush}" BorderThickness="0,0,0,0" >
+                                    <TextBlock Text="{Binding Description}" VerticalAlignment="Center" Margin="5" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+        </Grid>
+
+    </Grid>
+</views:CommonPage>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<engagement>
+  <agent>
+    <connectionString>
+      Endpoint=igorsychapp-Collection.device.mobileengagement.windows.net;SdkKey=dcd995d8f4be3fc9abb47609c9da5471;AppId=nei000052</connectionString>
+    <reportCrash>true</reportCrash>
+  </agent>
+  <reach>
+    <enableNativePush>true</enableNativePush>
+    <channelName></channelName>
+  </reach>
+</engagement>

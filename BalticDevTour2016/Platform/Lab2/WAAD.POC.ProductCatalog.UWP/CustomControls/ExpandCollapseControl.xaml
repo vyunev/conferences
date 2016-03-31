@@ -1,0 +1,91 @@
+﻿<UserControl
+    x:Class="WAAD.POC.ProductCatalog.UWP.CustomControls.ExpandCollapseControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    
+    <UserControl.Resources>
+
+        <x:String x:Key="CollapseArrowSymbol">&#xE0A1;</x:String>
+
+        <Style x:Key="BodySymbolStyle" TargetType="TextBlock" >
+            <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="{StaticResource SolidWhiteBrush}"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header Row -->
+        <Border Grid.Row="0" Tapped="CollapseTabbed" BorderThickness="0,0,0,1" MinHeight="40" 
+                Background="{StaticResource ExpanderHeaderBackgroundBrush}">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header Content Control -->
+                <ContentControl x:Name="HeaderContentControl" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" 
+                                Margin="-15,0,0,0">
+                </ContentControl>
+
+                <!-- Collapsed Symbol -->
+                <TextBlock x:Name="CollapseSymbol" Grid.Column="1" Margin="10,0,10,0" Text="{StaticResource CollapseArrowSymbol}" 
+                           Style="{StaticResource BodySymbolStyle}" >
+                    <TextBlock.Projection>
+                        <PlaneProjection RotationZ="0" />
+                    </TextBlock.Projection>
+                </TextBlock>
+                
+            </Grid>
+        </Border>
+
+        <!-- Body Row -->
+        <Border x:Name="CollapsedSection" Visibility="Collapsed" Grid.Row="1" MinHeight="120" RenderTransformOrigin="0.5,0.5" 
+                BorderThickness="0,0,0,1" Background="{StaticResource ExpanderActiveBackgroundBrush}">
+            <Border.RenderTransform>
+                <ScaleTransform/>
+            </Border.RenderTransform>
+            <ContentControl x:Name="BodyContentControl" >
+            </ContentControl>
+        </Border>
+
+        <VisualStateManager.VisualStateGroups>
+    		<VisualStateGroup x:Name="VisualStateGroup">
+    			<VisualStateGroup.Transitions>
+    				<VisualTransition GeneratedDuration="0:0:0.1"/>
+    			</VisualStateGroup.Transitions>
+    			<VisualState x:Name="Up"/>
+    			<VisualState x:Name="Down">
+    				<Storyboard>
+                        <DoubleAnimation Duration="0" To="180" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationZ)" Storyboard.TargetName="CollapseSymbol" d:IsOptimized="True"/>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CollapsedSection">
+    						<DiscreteObjectKeyFrame KeyTime="0">
+    							<DiscreteObjectKeyFrame.Value>
+    								<Visibility>Visible</Visibility>
+    							</DiscreteObjectKeyFrame.Value>
+    						</DiscreteObjectKeyFrame>
+    					</ObjectAnimationUsingKeyFrames>
+                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.RenderTransform).(LayoutTransform.ScaleY)" Storyboard.TargetName="CollapsedSection" d:IsOptimized="True"/>
+                        <PointAnimation Duration="0" To="0.5,0" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="CollapsedSection" d:IsOptimized="True"/>
+    				</Storyboard>
+    			</VisualState>
+    		</VisualStateGroup>
+    	</VisualStateManager.VisualStateGroups>
+
+    </Grid>
+    
+</UserControl>

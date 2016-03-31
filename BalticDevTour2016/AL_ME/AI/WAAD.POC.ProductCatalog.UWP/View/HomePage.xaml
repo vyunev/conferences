@@ -1,0 +1,132 @@
+﻿<views:CommonPage
+    x:Class="WAAD.POC.ProductCatalog.UWP.View.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:data="using:WAAD.POC.ProductCatalog.UWP.ViewModel"
+    xmlns:views="using:WAAD.POC.ProductCatalog.UWP.View"
+    xmlns:common="using:WAAD.POC.ProductCatalog.UWP.Common"
+    xmlns:ctl="using:WAAD.POC.ProductCatalog.UWP.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    d:DataContext="{Binding Source={d:DesignInstance Type=data:HomeViewModel, IsDesignTimeCreatable=True}}"
+    >
+    <views:CommonPage.Resources>
+        <ItemsPanelTemplate x:Key="SubCategoryWrapGridPanelStyle">
+            <VariableSizedWrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="SubCategoryHeaderTemplate">
+            <Grid Margin="0,0,0,10">
+                <TextBlock Text="{Binding}" FontSize="22"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductCategoryWideSectionTemplate">
+            <GridView MaxWidth="600" ItemsSource="{Binding Category.SubCategoryItems}" Header="{Binding Category.Name}" ItemTemplate="{StaticResource ProductSubCategoryWideTemplate}" IsItemClickEnabled="true" ItemContainerStyle="{StaticResource ProductItemGridViewContainerStyle}"  SelectionMode="None" HeaderTemplate="{StaticResource SubCategoryHeaderTemplate}" Margin="0,0,40,0" common:ItemClickCommand.Command="{Binding SubCategoryClickedCommand, Mode=OneTime}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductCategorySectionTemplate">
+            <GridView MaxWidth="500" ItemsSource="{Binding Category.SubCategoryItems}" Header="{Binding Category.Name}" ItemTemplate="{StaticResource ProductSubCategoryTemplate}" IsItemClickEnabled="true" ItemContainerStyle="{StaticResource ProductItemGridViewContainerStyle}"  SelectionMode="None" HeaderTemplate="{StaticResource SubCategoryHeaderTemplate}" Margin="0,0,40,0" common:ItemClickCommand.Command="{Binding SubCategoryClickedCommand, Mode=OneTime}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductCategorySectionThinTemplate">
+            <GridView MaxWidth="500" ItemsSource="{Binding Category.SubCategoryItems}" Header="{Binding Category.Name}" ItemTemplate="{StaticResource ProductSubCategoryTemplate}" IsItemClickEnabled="true" ItemContainerStyle="{StaticResource ProductItemGridViewContainerStyle}"  SelectionMode="None" HeaderTemplate="{StaticResource SubCategoryHeaderTemplate}" Margin="0,0,0,0" common:ItemClickCommand.Command="{Binding SubCategoryClickedCommand, Mode=OneTime}"/>
+        </DataTemplate>
+        <ItemsPanelTemplate x:Key="SubcategoryPanelExtraLargeTemplate">
+            <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="2"  HorizontalAlignment="Stretch" HorizontalChildrenAlignment="Stretch" VerticalChildrenAlignment="Stretch" />
+        </ItemsPanelTemplate>
+        <DataTemplate x:Key="CategoriesWideSectionTemplate">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding AllCategories}" ItemsPanel="{StaticResource SubCategoryWrapGridPanelStyle}" ItemTemplate="{StaticResource ProductCategoryWideSectionTemplate}"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="CategoriesSectionTemplate">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding AllCategories}" ItemsPanel="{StaticResource SubCategoryWrapGridPanelStyle}" ItemTemplate="{StaticResource ProductCategorySectionTemplate}" Margin="0,0,-20,0"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="CategoriesSectionThinTemplate">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding AllCategories}" ItemsPanel="{StaticResource SubCategoryWrapGridPanelStyle}" ItemTemplate="{StaticResource ProductCategorySectionThinTemplate}" Margin="0,0,0,0"/>
+            </Grid>
+        </DataTemplate>
+    </views:CommonPage.Resources>
+    <Grid Style="{StaticResource LayoutRootStyle}" Padding="0" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="MobileDevice">
+                    <VisualState.StateTriggers>
+                        <common:DeviceFamilyAdaptiveTrigger DeviceFamily="Mobile"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FavoritesHubSection.Padding" Value="10,10,10,20"/>
+                        <Setter Target="CategoriesHubSection.Padding" Value="10,10,0,20"/>
+                        <Setter Target="CategoriesHubSection.ContentTemplate" Value="{StaticResource CategoriesSectionThinTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                
+                <!-- Depending on the Width of the Page Alternate between square + wide SubCategory hub Tile layouts. -->
+                <VisualState x:Name="Desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1300"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CategoriesHubSection.ContentTemplate" Value="{StaticResource CategoriesWideSectionTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="DesktopNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="CategoriesHubSection.Padding" Value="30,10,0,20"/>
+                        <Setter Target="CategoriesHubSection.ContentTemplate" Value="{StaticResource CategoriesSectionThinTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ctl:HeaderControl>
+            <ctl:HeaderControl.HeaderContent>
+                <TextBlock Text="HOME" Style="{ThemeResource PageTitleTextBlockStyle}" Foreground="{StaticResource HeroBackgroundThemeBrush}" />
+            </ctl:HeaderControl.HeaderContent>
+        </ctl:HeaderControl>
+        <Hub x:Name="RootHub"  Orientation="Vertical" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="30,0" Margin="0,-20,0,0" Grid.Row="1">
+            
+            <HubSection x:Name="HeroSection" Background="{StaticResource HeroBackgroundThemeBrush}" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Stretch" Width="Auto" Margin="0" VerticalAlignment="Top" Height="300"  VerticalContentAlignment="Stretch" Padding="0"  >
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ctl:ParallaxImageControl Margin="0,-100,0,0">
+                            <ctl:ParallaxImageControl.ScrollContent>
+                                <Image Source="/Branding/pcBackgroundHero.jpg" Stretch="UniformToFill" HorizontalAlignment="Stretch" MinHeight="600" VerticalAlignment="Center"/>
+                            </ctl:ParallaxImageControl.ScrollContent>
+                        </ctl:ParallaxImageControl>
+                        <Viewbox HorizontalAlignment="Left" StretchDirection="DownOnly" Margin="30,100,30,0">
+                            <Grid Height="120" Width="500">
+                                <Image Source="ms-appx:///Branding/pcLogoWhiteLarge.png" HorizontalAlignment="Left" Margin="0,0,0,0" MaxWidth="224" VerticalAlignment="Top"/>
+                                <StackPanel Margin="0,60,0,0" Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="{StaticResource AppName}" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="{StaticResource HeroForegroundThemeBrush}" VerticalAlignment="Center" Visibility="Collapsed"/>
+                                    <TextBlock Text="product catalog" Style="{StaticResource HeaderTextBlockStyle}" Foreground="{StaticResource HeroForegroundThemeBrush}" VerticalAlignment="Center" Margin="0,-10,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Viewbox>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection x:Name="FavoritesHubSection"  Header="Favorites" Width="Auto" Padding="30,10,30,20" Background="{StaticResource HalfWhiteBrush}" >
+                <DataTemplate>
+                    <Grid>
+                        <ListView ItemsSource="{Binding FavoriteProducts}" 
+                                  ItemTemplate="{StaticResource ProductItemTemplate}"  
+                                  Style="{StaticResource HorizontalListViewStyle}"  
+                                  common:ItemClickCommand.Command="{Binding ItemClickedCommand, Mode=OneTime}"                                   
+                                                                
+                                  />
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection x:Name="CategoriesHubSection" Width="Auto"  HorizontalAlignment="Stretch"  Padding="30,10,10,20" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" ContentTemplate="{StaticResource CategoriesWideSectionTemplate}" />
+        </Hub>
+    </Grid>
+</views:CommonPage>
